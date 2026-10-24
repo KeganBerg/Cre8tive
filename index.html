@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cre8tive Photography | Events, Portraits &amp; Family Photos</title>
+  <meta name="description" content="Cre8tive is a family-run photography business capturing events, portraits, families and life's milestones with a warm, relaxed approach.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="logo">Cre8tive <span>Photography</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bar"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact" class="btn btn-small">Book a session</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section id="top" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">Family-run photography</p>
+          <h1>Photos you&rsquo;ll treasure for years to come</h1>
+          <p class="lead">From birthdays and reunions to portraits and corporate events, we capture the moments that matter with a warm, relaxed approach that puts everyone at ease.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn">Book a session</a>
+            <a href="#portfolio" class="btn btn-outline">See our work</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="images/hero.svg" alt="A featured photograph from a recent session" width="1600" height="1000">
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+      <div class="container">
+        <header class="section-header">
+          <p class="eyebrow">What we photograph</p>
+          <h2>Sessions for every occasion</h2>
+          <p>Whatever the reason, we&rsquo;ll help you plan a session that fits you.</p>
+        </header>
+        <ul class="card-grid">
+          <li class="card">
+            <img src="images/svc-events.svg" alt="" width="800" height="600" loading="lazy">
+            <div class="card-body">
+              <h3>Events</h3>
+              <p>Birthdays, anniversaries, reunions, showers, galas and company gatherings, documented from start to finish.</p>
+            </div>
+          </li>
+          <li class="card">
+            <img src="images/svc-portraits.svg" alt="" width="800" height="600" loading="lazy">
+            <div class="card-body">
+              <h3>Portraits &amp; headshots</h3>
+              <p>Natural, flattering portraits for professionals, seniors, and anyone who wants a great photo of themselves.</p>
+            </div>
+          </li>
+          <li class="card">
+            <img src="images/svc-family.svg" alt="" width="800" height="600" loading="lazy">
+            <div class="card-body">
+              <h3>Family</h3>
+              <p>Relaxed sessions for families of every size, from little ones to grandparents, at home or outdoors.</p>
+            </div>
+          </li>
+          <li class="card">
+            <img src="images/svc-milestones.svg" alt="" width="800" height="600" loading="lazy">
+            <div class="card-body">
+              <h3>Milestones</h3>
+              <p>Graduations, engagements, maternity, retirements and the once-in-a-lifetime days in between.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <p class="eyebrow">Portfolio</p>
+          <h2>Recent work</h2>
+          <p>Choose a category, then select any photo to see it larger.</p>
+        </header>
+        <div class="filters" role="group" aria-label="Filter photos by category">
+          <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter" data-filter="events" aria-pressed="false">Events</button>
+          <button type="button" class="filter" data-filter="portraits" aria-pressed="false">Portraits</button>
+          <button type="button" class="filter" data-filter="family" aria-pressed="false">Family</button>
+          <button type="button" class="filter" data-filter="milestones" aria-pressed="false">Milestones</button>
+        </div>
+        <ul class="gallery">
+          <li class="gallery-item" data-category="events">
+            <button type="button" class="gallery-open" aria-label="View larger: Events photo 1">
+              <img src="images/portfolio/events-1.svg" alt="Guests celebrating at an event" loading="lazy">
+            </button>
+          </li>
+          <li class="gallery-item" data-category="portraits">
+            <button type="button" class="gallery-open" aria-label="View larger: Portraits photo 1">
+              <img src="images/portfolio/portraits-1.svg" alt="Professional portrait" loading="lazy">
+            </button>
+          </li>
+          <li class="gallery-item" data-category="family">
+            <button type="button" class="gallery-open" aria-label="View larger: Family photo 1">
+              <img src="images/portfolio/family-1.svg" alt="Family photo session" loading="lazy">
+            </button>
+          </li>
+          <li class="gallery-item" data-category="milestones">
+            <button type="button" class="gallery-open" aria-label="View larger: Milestones photo 1">
+              <img src="images/portfolio/milestones-1.svg" alt="Milestone celebration" loading="lazy">
+            </button>
+          </li>
+          <li class="gallery-item" data-category="events">
+            <button type="button" class="gallery-open" aria-label="View larger: Events photo 2">
+              <img src="images/portfolio/events-2.svg" alt="Guests celebrating at an event" loading="lazy">
+            </button>
+          </li>
+          <li class="gallery-item" data-category="portraits">
+            <button type="button" class="gallery-open" aria-label="View larger: Portraits photo 2">
+              <img src="images/portfolio/portraits-2.svg" alt="Professional portrait" loading="lazy">
+            </button>
+          </li>
+          <li class="gallery-item" data-category="family">
+            <button type="button" class="gallery-open" aria-label="View larger: Family photo 2">
+              <img src="images/portfolio/family-2.svg" alt="Family photo session" loading="lazy">
+            </button>
+          </li>
+          <li class="gallery-item" data-category="milestones">
+            <button type="button" class="gallery-open" aria-label="View larger: Milestones photo 2">
+              <img src="images/portfolio/milestones-2.svg" alt="Milestone celebration" loading="lazy">
+            </button>
+          </li>
+          <li class="gallery-item" data-category="events">
+            <button type="button" class="gallery-open" aria-label="View larger: Events photo 3">
+              <img src="images/portfolio/events-3.svg" alt="Guests celebrating at an event" loading="lazy">
+            </button>
+          </li>
+          <li class="gallery-item" data-category="portraits">
+            <button type="button" class="gallery-open" aria-label="View larger: Portraits photo 3">
+              <img src="images/portfolio/portraits-3.svg" alt="Professional portrait" loading="lazy">
+            </button>
+          </li>
+          <li class="gallery-item" data-category="family">
+            <button type="button" class="gallery-open" aria-label="View larger: Family photo 3">
+              <img src="images/portfolio/family-3.svg" alt="Family photo session" loading="lazy">
+            </button>
+          </li>
+          <li class="gallery-item" data-category="milestones">
+            <button type="button" class="gallery-open" aria-label="View larger: Milestones photo 3">
+              <img src="images/portfolio/milestones-3.svg" alt="Milestone celebration" loading="lazy">
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container about">
+        <div class="about-image">
+          <img src="images/about.svg" alt="Portrait of the photographer behind Cre8tive" width="900" height="1100" loading="lazy">
+        </div>
+        <div class="about-text">
+          <p class="eyebrow">About us</p>
+          <h2>Hi, we&rsquo;re Cre8tive</h2>
+          <!-- TODO: Replace with Mom's own story, in her words. -->
+          <p>Cre8tive is a family-run photography business built on a simple idea: everyone deserves beautiful photos of the people and moments they love.</p>
+          <p>Behind the camera is a photographer with years of experience and a real love for people. Whether it&rsquo;s your first professional photo or your fiftieth, we&rsquo;ll make the experience easy, comfortable and fun.</p>
+          <ul class="checklist">
+            <li>Friendly, patient and easy to work with</li>
+            <li>Carefully edited photos delivered in an online gallery</li>
+            <li>Print-ready files you&rsquo;re free to share</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <p class="eyebrow">How it works</p>
+          <h2>Simple from start to finish</h2>
+        </header>
+        <ol class="steps">
+          <li>
+            <span class="step-number" aria-hidden="true">1</span>
+            <h3>Get in touch</h3>
+            <p>Send us a message with your date and what you have in mind. We&rsquo;ll reply within one business day.</p>
+          </li>
+          <li>
+            <span class="step-number" aria-hidden="true">2</span>
+            <h3>Plan your session</h3>
+            <p>We&rsquo;ll talk through locations, timing and outfits so you feel prepared and relaxed.</p>
+          </li>
+          <li>
+            <span class="step-number" aria-hidden="true">3</span>
+            <h3>Enjoy your photos</h3>
+            <p>Your edited photos arrive in a private online gallery, ready to download, share and print.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <header class="section-header">
+          <p class="eyebrow">Pricing</p>
+          <h2>Packages</h2>
+          <!-- TODO: Replace the prices and details below with real numbers. -->
+          <p>Every session is a little different, so these are starting points. Ask us for a custom quote.</p>
+        </header>
+        <ul class="pricing-grid">
+          <li class="price-card">
+            <h3>Mini session</h3>
+            <p class="price"><span>Starting at</span> $150</p>
+            <ul>
+              <li>30 minutes, one location</li>
+              <li>10 edited photos</li>
+              <li>Online gallery</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Ask about this</a>
+          </li>
+          <li class="price-card is-featured">
+            <p class="badge">Most popular</p>
+            <h3>Portrait &amp; family</h3>
+            <p class="price"><span>Starting at</span> $300</p>
+            <ul>
+              <li>1 hour, up to two locations</li>
+              <li>30+ edited photos</li>
+              <li>Online gallery &amp; print release</li>
+            </ul>
+            <a href="#contact" class="btn">Ask about this</a>
+          </li>
+          <li class="price-card">
+            <h3>Event coverage</h3>
+            <p class="price"><span>Starting at</span> $500</p>
+            <ul>
+              <li>2+ hours of coverage</li>
+              <li>All the best moments, edited</li>
+              <li>Online gallery &amp; print release</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Ask about this</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <p class="eyebrow">Kind words</p>
+          <h2>What clients say</h2>
+          <!-- TODO: Replace these sample quotes with real client reviews (with their permission). -->
+        </header>
+        <ul class="quotes">
+          <li>
+            <blockquote>
+              <p>&ldquo;She made our whole family feel comfortable, even Grandpa! The photos are the best we&rsquo;ve ever had.&rdquo;</p>
+              <footer>Sample review, family session</footer>
+            </blockquote>
+          </li>
+          <li>
+            <blockquote>
+              <p>&ldquo;Our anniversary party photos captured every moment. We relive the night every time we look at them.&rdquo;</p>
+              <footer>Sample review, event</footer>
+            </blockquote>
+          </li>
+          <li>
+            <blockquote>
+              <p>&ldquo;Quick, professional and so easy to work with. I finally have a headshot I love.&rdquo;</p>
+              <footer>Sample review, headshot</footer>
+            </blockquote>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container contact">
+        <div class="contact-text">
+          <p class="eyebrow">Contact</p>
+          <h2>Let&rsquo;s plan your session</h2>
+          <p>Tell us a little about what you&rsquo;re looking for and we&rsquo;ll get back to you within one business day.</p>
+          <!-- TODO: Replace with the real phone number, email and service area. -->
+          <dl class="contact-details">
+            <dt>Email</dt>
+            <dd><a href="mailto:hello@example.com">hello@example.com</a></dd>
+            <dt>Phone</dt>
+            <dd><a href="tel:+15555550123">(555) 555-0123</a></dd>
+            <dt>Serving</dt>
+            <dd>Your city and surrounding areas</dd>
+          </dl>
+        </div>
+        <form class="contact-form" id="contact-form" data-email="hello@example.com" novalidate>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="optional">(optional)</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="type">Type of session</label>
+              <select id="type" name="type">
+                <option>Event</option>
+                <option>Portrait or headshot</option>
+                <option>Family</option>
+                <option>Milestone</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="date">Preferred date <span class="optional">(optional)</span></label>
+              <input id="date" name="date" type="date">
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Tell us about it</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <p class="form-status" role="status" aria-live="polite"></p>
+          <button type="submit" class="btn btn-block">Send message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="logo">Cre8tive <span>Photography</span></p>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <p class="copyright">&copy; <span id="year">2026</span> Cre8tive Photography. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+    <button type="button" class="lightbox-prev" aria-label="Previous photo">&#8249;</button>
+    <img class="lightbox-image" src="" alt="">
+    <button type="button" class="lightbox-next" aria-label="Next photo">&#8250;</button>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

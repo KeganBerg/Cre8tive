@@ -12,34 +12,35 @@ straight from the folder or hosted for free on GitHub Pages.
 | `index.html` | All the page content (text, prices, contact details) |
 | `css/styles.css` | Colors, fonts and layout. Palette lives at the top in `:root` |
 | `js/main.js` | Mobile menu, portfolio filter, photo viewer, contact form |
-| `images/` | Photos. Everything here now is a gray placeholder |
+| `images/` | Photos. Everything here now is a blurred black-and-white placeholder |
 
 ## Before going live
 
 Search `index.html` for `TODO` to find everything that still needs real content:
 
 1. **Photos.** Replace the placeholders in `images/` and `images/portfolio/` with real
-   photos (JPG, about 2000px on the long side, under 500 KB each). If you change a file
-   name or extension, update the matching `src="..."` in `index.html`. Give every photo a
-   short `alt` description.
+   photos, keeping the same file names (JPG, about 2000px on the long side, under 500 KB
+   each). Update each photo's `alt` description in `index.html`. The design is built
+   around black-and-white prints, but color photos work too.
 2. **About section.** Swap in the photographer's own story.
-3. **Pricing.** Replace the sample "Starting at" prices and package details.
-4. **Reviews.** Replace the sample quotes with real client reviews (with permission).
+3. **Rates.** Replace the sample "from" prices and session details.
+4. **Review.** Replace the sample quote with a real client review (with permission).
 5. **Contact details.** Update the email, phone and service area. The email also appears
    in `data-email="..."` on the contact form.
 
 ### Adding a portfolio photo
 
-Copy one `<li class="gallery-item" ...>` block in the Portfolio section, set
+Copy one `<li class="frame-item" ...>` block in the Selected work section, set
 `data-category` to `events`, `portraits`, `family` or `milestones`, and point the `img`
-at the new file.
+at the new file. Frames are laid out in rows: three regular frames, or one `wide` frame plus
+one regular frame. Renumber the `frame` labels if you like.
 
 ### Contact form
 
 With no server, the form opens the visitor's email app with their message filled in. To
 receive messages directly instead, create a free form at [Formspree](https://formspree.io),
-then give the `<form>` `action="https://formspree.io/f/YOUR_ID" method="POST"` and remove
-the contact form block at the bottom of `js/main.js`.
+then give the `<form id="inquiry">` `action="https://formspree.io/f/YOUR_ID" method="POST"` and remove
+the inquiry form block at the bottom of `js/main.js`.
 
 ## Publishing on GitHub Pages
 

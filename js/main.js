@@ -1,105 +1,99 @@
 (function () {
   "use strict";
 
-  // Footer year
   var year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 
-  // Mobile navigation
-  var toggle = document.querySelector(".nav-toggle");
+  // Small-screen menu
+  var menuButton = document.querySelector(".menu-button");
   var nav = document.getElementById("site-nav");
 
-  function closeNav() {
-    toggle.setAttribute("aria-expanded", "false");
-    nav.classList.remove("is-open");
+  function setMenu(open) {
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.textContent = open ? "Close" : "Menu";
+    nav.classList.toggle("is-open", open);
   }
 
-  toggle.addEventListener("click", function () {
-    var open = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!open));
-    nav.classList.toggle("is-open", !open);
+  menuButton.addEventListener("click", function () {
+    setMenu(menuButton.getAttribute("aria-expanded") !== "true");
   });
 
   nav.addEventListener("click", function (e) {
-    if (e.target.closest("a")) closeNav();
+    if (e.target.closest("a")) setMenu(false);
   });
 
-  // Portfolio filters
+  // Work filters
+  var sheet = document.querySelector(".sheet");
   var filters = document.querySelectorAll(".filter");
-  var items = document.querySelectorAll(".gallery-item");
+  var items = document.querySelectorAll(".frame-item");
 
   filters.forEach(function (button) {
     button.addEventListener("click", function () {
       var category = button.dataset.filter;
       filters.forEach(function (b) {
-        var active = b === button;
-        b.classList.toggle("is-active", active);
-        b.setAttribute("aria-pressed", String(active));
+        b.setAttribute("aria-pressed", String(b === button));
       });
       items.forEach(function (item) {
         item.hidden = category !== "all" && item.dataset.category !== category;
       });
+      sheet.classList.toggle("is-filtered", category !== "all");
     });
   });
 
-  // Lightbox
-  var lightbox = document.getElementById("lightbox");
-  var lightboxImage = lightbox.querySelector(".lightbox-image");
+  // Photo viewer
+  var viewer = document.getElementById("viewer");
+  var viewerImage = viewer.querySelector(".viewer-image");
+  var viewerCount = viewer.querySelector(".viewer-count");
+  var closeButton = viewer.querySelector(".viewer-close");
   var current = 0;
   var lastFocus = null;
 
-  function visibleImages() {
+  function shown() {
     return Array.prototype.filter
       .call(items, function (item) { return !item.hidden; })
       .map(function (item) { return item.querySelector("img"); });
   }
 
   function show(index) {
-    var images = visibleImages();
+    var images = shown();
     current = (index + images.length) % images.length;
-    lightboxImage.src = images[current].src;
-    lightboxImage.alt = images[current].alt;
+    viewerImage.src = images[current].src;
+    viewerImage.alt = images[current].alt;
+    viewerCount.textContent = (current + 1) + " / " + images.length;
   }
 
-  function openLightbox(img) {
+  function openViewer(img) {
     lastFocus = document.activeElement;
-    show(visibleImages().indexOf(img));
-    lightbox.hidden = false;
+    show(shown().indexOf(img));
+    viewer.hidden = false;
     document.body.style.overflow = "hidden";
-    lightbox.querySelector(".lightbox-close").focus();
+    closeButton.focus();
   }
 
-  function closeLightbox() {
-    lightbox.hidden = true;
+  function closeViewer() {
+    viewer.hidden = true;
     document.body.style.overflow = "";
     if (lastFocus) lastFocus.focus();
   }
 
-  document.querySelectorAll(".gallery-open").forEach(function (button) {
-    button.addEventListener("click", function () {
-      openLightbox(button.querySelector("img"));
-    });
+  document.querySelectorAll(".frame-open").forEach(function (button) {
+    var img = button.querySelector("img");
+    button.setAttribute("aria-label", "View larger: " + img.alt);
+    button.addEventListener("click", function () { openViewer(img); });
   });
 
-  lightbox.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
-  lightbox.querySelector(".lightbox-prev").addEventListener("click", function () { show(current - 1); });
-  lightbox.querySelector(".lightbox-next").addEventListener("click", function () { show(current + 1); });
-
-  lightbox.addEventListener("click", function (e) {
-    if (e.target === lightbox) closeLightbox();
-  });
+  viewer.querySelector(".viewer-prev").addEventListener("click", function () { show(current - 1); });
+  viewer.querySelector(".viewer-next").addEventListener("click", function () { show(current + 1); });
+  closeButton.addEventListener("click", closeViewer);
 
   document.addEventListener("keydown", function (e) {
-    if (lightbox.hidden) {
-      if (e.key === "Escape") closeNav();
-      return;
-    }
-    if (e.key === "Escape") closeLightbox();
+    if (viewer.hidden) return;
+    if (e.key === "Escape") closeViewer();
     if (e.key === "ArrowLeft") show(current - 1);
     if (e.key === "ArrowRight") show(current + 1);
     if (e.key === "Tab") {
-      // Keep keyboard focus inside the lightbox
-      var buttons = lightbox.querySelectorAll("button");
+      // Keep keyboard focus inside the viewer
+      var buttons = viewer.querySelectorAll("button");
       var first = buttons[0];
       var last = buttons[buttons.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
@@ -107,10 +101,10 @@
     }
   });
 
-  // Contact form
+  // Inquiry form
   // Without a backend, the form opens the visitor's email app with the message
   // filled in. To receive messages directly instead, see the README.
-  var form = document.getElementById("contact-form");
+  var form = document.getElementById("inquiry");
   var status = form.querySelector(".form-status");
 
   form.addEventListener("submit", function (e) {
@@ -124,29 +118,27 @@
     });
 
     if (invalid) {
-      status.textContent = "Please fill in your name, a valid email and a short message.";
+      status.textContent = "Please add your name, a valid email and a few details.";
       status.className = "form-status is-error";
       invalid.focus();
       return;
     }
 
     var data = new FormData(form);
-    var subject = "Photo session inquiry: " + data.get("type");
     var body = [
       "Name: " + data.get("name"),
       "Email: " + data.get("email"),
-      "Phone: " + (data.get("phone") || "-"),
       "Session: " + data.get("type"),
-      "Preferred date: " + (data.get("date") || "-"),
+      "Date: " + (data.get("date") || "not set"),
       "",
       data.get("message")
     ].join("\n");
 
     window.location.href = "mailto:" + form.dataset.email +
-      "?subject=" + encodeURIComponent(subject) +
+      "?subject=" + encodeURIComponent("Photo inquiry: " + data.get("type")) +
       "&body=" + encodeURIComponent(body);
 
-    status.textContent = "Thank you! Your email app should open with your message ready to send.";
-    status.className = "form-status is-success";
+    status.textContent = "Thank you. Your email app should open with the message ready to send.";
+    status.className = "form-status";
   });
 })();

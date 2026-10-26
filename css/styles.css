@@ -203,33 +203,50 @@ figcaption { margin-top: 10px; }
 
 /* Work ------------------------------------------------------------------ */
 
-.filters { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 28px;
+  margin-bottom: clamp(28px, 4vw, 48px);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ink);
+}
 
-.filter {
+.tabs button {
   padding: 8px 0;
   border: 0;
-  border-bottom: 1px solid transparent;
+  border-bottom: 2px solid transparent;
   background: none;
   color: var(--gray);
+  font-weight: 500;
   cursor: pointer;
 }
 
-.filter:hover { color: var(--ink); }
+.tabs button:hover { color: var(--ink); }
 
-.filter[aria-pressed="true"] {
+.tabs button[aria-pressed="true"] {
   color: var(--ink);
   border-bottom-color: var(--ink);
 }
 
+.tabs .count {
+  margin-left: 2px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  vertical-align: super;
+}
+
+/* js/gallery.js arranges prints into full rows and sets each one's span. */
 .sheet {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: clamp(28px, 3.4vw, 48px) var(--gap);
 }
 
-.frame-item { grid-column: span 4; }
-.frame-item.wide { grid-column: span 8; }
-.frame-item[hidden] { display: none; }
+.span-4 { grid-column: span 4; }
+.span-6 { grid-column: span 6; }
+.span-8 { grid-column: span 8; }
+.span-12 { grid-column: span 12; }
 
 .frame-open {
   display: block;
@@ -240,7 +257,7 @@ figcaption { margin-top: 10px; }
   cursor: zoom-in;
 }
 
-/* Every frame in a row shares a height: a 4-column print is 4:5, an 8-column print 8:5. */
+/* Prints in a row share a height: a 4-column print is 4:5, an 8-column print 8:5. */
 .frame-open img {
   width: 100%;
   aspect-ratio: 4 / 5;
@@ -248,13 +265,14 @@ figcaption { margin-top: 10px; }
   transition: opacity 0.25s;
 }
 
-.wide .frame-open img { aspect-ratio: 8 / 5; }
+.span-8 .frame-open img { aspect-ratio: 8 / 5; }
+.span-6 .frame-open img { aspect-ratio: 3 / 2; }
+.span-6.is-tall .frame-open img { aspect-ratio: 6 / 5; }
+.span-12 .frame-open img { aspect-ratio: 2 / 1; }
 
 .frame-open:hover img { opacity: 0.88; }
 
-/* While filtering, show the prints as even thirds so rows never leave gaps. */
-.sheet.is-filtered .frame-item { grid-column: span 4; }
-.sheet.is-filtered .frame-open img { aspect-ratio: 4 / 5; }
+.sheet-empty { color: var(--gray); }
 
 .caption { margin: 10px 0 0; }
 
@@ -308,6 +326,15 @@ figcaption { margin-top: 10px; }
   text-align: right;
 }
 
+.rate-book {
+  grid-column: 2;
+  justify-self: start;
+  padding: 6px 0;
+  font-weight: 500;
+}
+
+.rate-book::after { content: " \2192"; }
+
 .rates-note {
   max-width: 40em;
   margin-top: 28px;
@@ -350,31 +377,25 @@ figcaption { margin-top: 10px; }
   font-size: clamp(2.4rem, 5vw, 4.25rem);
 }
 
-.contact-intro > p { color: var(--gray); }
+.contact-intro > p { max-width: 30em; margin-bottom: 32px; color: var(--gray); }
 
-.contact-intro dl {
+.contact-details {
+  grid-column: 8 / -1;
+  align-self: end;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 8px 24px;
-  margin: 36px 0 0;
+  gap: 10px 28px;
+  margin: 0;
 }
 
-.contact-intro dt {
+.contact-details dt {
   font-family: var(--mono);
   font-size: 0.8125rem;
-  line-height: 2.2;
+  line-height: 2.4;
   color: var(--gray);
 }
 
-.contact-intro dd { margin: 0; }
-
-.inquiry {
-  grid-column: 7 / -1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px var(--gap);
-  align-content: start;
-}
+.contact-details dd { margin: 0; font-size: 1.25rem; }
 
 .field-full { grid-column: 1 / -1; }
 
@@ -421,8 +442,12 @@ textarea:focus {
 }
 
 .send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 56px;
   padding: 0 36px;
+  text-decoration: none;
   border: 1px solid var(--ink);
   border-radius: 0;
   background: var(--ink);
@@ -433,9 +458,190 @@ textarea:focus {
 }
 
 .send:hover { background: var(--white); color: var(--ink); }
+.send:disabled { opacity: 0.6; cursor: progress; }
 
 .form-status { flex: 1; min-width: 14em; margin: 0; }
 .form-status.is-error { color: #a33a2c; }
+
+/* Inner pages ----------------------------------------------------------- */
+
+.page { padding: clamp(56px, 8vw, 112px) var(--gutter) 0; }
+
+.page-head {
+  max-width: 900px;
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+.page-head h1 {
+  margin-bottom: 20px;
+  font-size: clamp(2.4rem, 5.2vw, 4.5rem);
+}
+
+.page-head p { max-width: 34em; color: var(--gray); font-size: 1.25rem; }
+
+.page .block { padding-left: 0; padding-right: 0; }
+
+.next-step h2 { margin-bottom: 12px; font-size: clamp(2rem, 4vw, 3rem); }
+.next-step p { color: var(--gray); margin-bottom: 28px; }
+
+/* Booking --------------------------------------------------------------- */
+
+.booking {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--gap);
+  align-items: start;
+}
+
+.booking-form,
+.thanks { grid-column: 1 / span 8; grid-row: 1; }
+
+.booking-aside {
+  grid-column: 10 / -1;
+  grid-row: 1;
+  position: sticky;
+  top: 32px;
+}
+
+.booking-aside h2 {
+  margin-bottom: 10px;
+  font-size: 1.375rem;
+  letter-spacing: -0.02em;
+}
+
+.booking-aside p { color: var(--gray); margin-bottom: 36px; }
+.booking-aside a { color: var(--ink); }
+.big-link { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
+
+.group {
+  min-width: 0;
+  margin: 0 0 56px;
+  padding: 0;
+  border: 0;
+}
+
+.group[hidden] { display: none; }
+
+.group legend {
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 0 0 12px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.choice { position: relative; margin: 0; cursor: pointer; }
+
+.choice input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice span {
+  display: block;
+  height: 100%;
+  padding: 18px 20px;
+  border: 1px solid var(--rule);
+  background: var(--white);
+  color: var(--gray);
+  font-size: 1rem;
+  line-height: 1.45;
+  transition: border-color 0.15s;
+}
+
+.choice b {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.choice:hover span { border-color: var(--mute); }
+
+.choice input:checked + span {
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.choice input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+.choice input[aria-invalid="true"] + span { border-color: #a33a2c; }
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px var(--gap);
+}
+
+label span { color: var(--mute); }
+
+.checks { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; }
+
+.checks-label {
+  flex-basis: 100%;
+  font-size: 0.9375rem;
+  color: var(--gray);
+}
+
+.checks label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin: 0;
+  font-size: 1.0625rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.checks input {
+  width: 22px;
+  height: 22px;
+  min-height: 0;
+  margin: 0;
+  accent-color: var(--ink);
+}
+
+.trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.thanks h2 { margin-bottom: 20px; font-size: clamp(2.4rem, 5vw, 4rem); }
+.thanks p { max-width: 32em; color: var(--gray); font-size: 1.1875rem; }
+.thanks .arrow-link { color: var(--ink); }
+.thanks:focus { outline: none; }
+
+/* FAQ ------------------------------------------------------------------- */
+
+.faq-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px var(--gap);
+  margin: 0;
+}
+
+.faq-list dt {
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.faq-list dd { margin: 0; max-width: 32em; color: var(--gray); }
 
 /* Colophon -------------------------------------------------------------- */
 
@@ -511,6 +717,9 @@ textarea:focus {
 
 .viewer-close { margin-left: 20px; }
 
+.viewer-caption { color: var(--gray); }
+.viewer-caption:empty { display: none; }
+
 /* Smaller screens ------------------------------------------------------- */
 
 @media (max-width: 900px) {
@@ -518,11 +727,13 @@ textarea:focus {
   .opening-aside { grid-column: 1 / -1; max-width: 32em; margin-top: 28px; }
 
   .sheet { grid-template-columns: repeat(2, 1fr); }
-  .frame-item,
-  .sheet.is-filtered .frame-item { grid-column: span 1; }
-  .frame-item.wide { grid-column: 1 / -1; }
-  .sheet.is-filtered .frame-item.wide { grid-column: span 1; }
-  .wide .frame-open img { aspect-ratio: 3 / 2; }
+  .span-4,
+  .span-6 { grid-column: span 1; }
+  .span-8,
+  .span-12 { grid-column: 1 / -1; }
+  .span-8 .frame-open img,
+  .span-12 .frame-open img { aspect-ratio: 3 / 2; }
+  .span-6 .frame-open img { aspect-ratio: 4 / 5; }
 
   .about-image { grid-column: 1 / span 10; }
   .about-text { grid-column: 1 / -1; margin-top: 40px; }
@@ -530,12 +741,20 @@ textarea:focus {
   .rates li { grid-template-columns: 1fr auto; row-gap: 8px; }
   .rates h3 { grid-column: 1; }
   .rates .rate { grid-column: 2; grid-row: 1; }
-  .rates li > p:not(.rate) { grid-column: 1 / -1; }
+  .rates li > p:not(.rate),
+  .rate-book { grid-column: 1 / -1; }
 
   .words figure { margin: 0; }
 
   .contact-intro,
-  .inquiry { grid-column: 1 / -1; }
+  .contact-details { grid-column: 1 / -1; }
+
+  .booking-form,
+  .thanks,
+  .booking-aside { grid-column: 1 / -1; grid-row: auto; position: static; }
+  .booking-aside { margin-top: 24px; padding-top: 32px; border-top: 1px solid var(--ink); }
+
+  .faq-list { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
@@ -560,10 +779,15 @@ textarea:focus {
   }
 
   .sheet { grid-template-columns: 1fr; }
-  .frame-item.wide .frame-open img,
-  .sheet.is-filtered .frame-open img { aspect-ratio: 4 / 5; }
+  .sheet .frame-item { grid-column: 1 / -1; }
+  .is-wide .frame-open img { aspect-ratio: 3 / 2; }
+  .is-tall .frame-open img { aspect-ratio: 4 / 5; }
 
-  .inquiry { grid-template-columns: 1fr; }
+  .choices,
+  .fields { grid-template-columns: 1fr; }
+
+  .viewer-bar { flex-wrap: wrap; justify-content: center; }
+  .viewer-caption { order: -1; flex-basis: 100%; text-align: center; }
 
   .send { width: 100%; }
 

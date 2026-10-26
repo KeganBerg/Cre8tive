@@ -17,10 +17,10 @@
     <a href="#top" class="wordmark" aria-label="Cre8tive, home">Cre<em>8</em>tive</a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Main">
-      <a href="#work">Work</a>
+      <a href="work.html">Work</a>
       <a href="#about">About</a>
-      <a href="#sessions">Sessions</a>
-      <a href="#contact" class="nav-book">Book a session</a>
+      <a href="#sessions">Rates</a>
+      <a href="book.html" class="nav-book">Book a session</a>
     </nav>
   </header>
 
@@ -30,7 +30,7 @@
       <h1>Photographs of the people you love, <em>made with&nbsp;care.</em></h1>
       <div class="opening-aside">
         <p>Events, portraits, families and the milestones in between. A family-run studio that takes its time with you.</p>
-        <a href="#contact" class="arrow-link">Book a session</a>
+        <a href="book.html" class="arrow-link">Book a session</a>
       </div>
       <figure class="opening-image">
         <img src="images/hero.jpg" alt="A featured photograph from a recent session" width="2000" height="1250">
@@ -42,65 +42,10 @@
     <section id="work" class="block">
       <div class="block-head">
         <h2>Selected work</h2>
-        <div class="filters" role="group" aria-label="Show photos from">
-          <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
-          <button type="button" class="filter" data-filter="events" aria-pressed="false">Events</button>
-          <button type="button" class="filter" data-filter="portraits" aria-pressed="false">Portraits</button>
-          <button type="button" class="filter" data-filter="family" aria-pressed="false">Family</button>
-          <button type="button" class="filter" data-filter="milestones" aria-pressed="false">Milestones</button>
-        </div>
+        <a href="work.html" class="arrow-link">See all work</a>
       </div>
-      <!-- Add a photo by copying one <li>. data-category must be events, portraits, family or milestones. -->
-      <ul class="sheet">
-        <li class="frame-item wide" data-category="events">
-          <button type="button" class="frame-open"><img src="images/portfolio/events-1.jpg" alt="Guests at an anniversary dinner" loading="lazy" width="1500" height="1000"></button>
-          <p class="caption"><span class="frame">02</span> Events</p>
-        </li>
-        <li class="frame-item" data-category="portraits">
-          <button type="button" class="frame-open"><img src="images/portfolio/portraits-1.jpg" alt="Portrait of a woman by a window" loading="lazy" width="1000" height="1250"></button>
-          <p class="caption"><span class="frame">03</span> Portraits</p>
-        </li>
-        <li class="frame-item" data-category="family">
-          <button type="button" class="frame-open"><img src="images/portfolio/family-2.jpg" alt="Three generations of a family outdoors" loading="lazy" width="1000" height="1250"></button>
-          <p class="caption"><span class="frame">04</span> Family</p>
-        </li>
-        <li class="frame-item" data-category="milestones">
-          <button type="button" class="frame-open"><img src="images/portfolio/milestones-1.jpg" alt="A graduate with their diploma" loading="lazy" width="1000" height="1250"></button>
-          <p class="caption"><span class="frame">05</span> Milestones</p>
-        </li>
-        <li class="frame-item" data-category="events">
-          <button type="button" class="frame-open"><img src="images/portfolio/events-2.jpg" alt="A toast at a birthday party" loading="lazy" width="1000" height="1250"></button>
-          <p class="caption"><span class="frame">06</span> Events</p>
-        </li>
-        <li class="frame-item" data-category="milestones">
-          <button type="button" class="frame-open"><img src="images/portfolio/milestones-3.jpg" alt="An expecting mother at sunset" loading="lazy" width="1000" height="1250"></button>
-          <p class="caption"><span class="frame">07</span> Milestones</p>
-        </li>
-        <li class="frame-item wide" data-category="family">
-          <button type="button" class="frame-open"><img src="images/portfolio/family-1.jpg" alt="A family walking together in a park" loading="lazy" width="1500" height="1000"></button>
-          <p class="caption"><span class="frame">08</span> Family</p>
-        </li>
-        <li class="frame-item" data-category="portraits">
-          <button type="button" class="frame-open"><img src="images/portfolio/portraits-2.jpg" alt="Senior portrait outdoors" loading="lazy" width="1000" height="1250"></button>
-          <p class="caption"><span class="frame">09</span> Portraits</p>
-        </li>
-        <li class="frame-item" data-category="family">
-          <button type="button" class="frame-open"><img src="images/portfolio/family-3.jpg" alt="Grandparents with their grandchildren" loading="lazy" width="1500" height="1000"></button>
-          <p class="caption"><span class="frame">10</span> Family</p>
-        </li>
-        <li class="frame-item" data-category="portraits">
-          <button type="button" class="frame-open"><img src="images/portfolio/portraits-3.jpg" alt="Headshot of a man in a suit" loading="lazy" width="1500" height="1000"></button>
-          <p class="caption"><span class="frame">11</span> Portraits</p>
-        </li>
-        <li class="frame-item wide" data-category="events">
-          <button type="button" class="frame-open"><img src="images/portfolio/events-3.jpg" alt="Dancing at a company celebration" loading="lazy" width="1500" height="1000"></button>
-          <p class="caption"><span class="frame">12</span> Events</p>
-        </li>
-        <li class="frame-item" data-category="milestones">
-          <button type="button" class="frame-open"><img src="images/portfolio/milestones-2.jpg" alt="An engaged couple laughing" loading="lazy" width="1500" height="1000"></button>
-          <p class="caption"><span class="frame">13</span> Milestones</p>
-        </li>
-      </ul>
+      <!-- Photos come from data/portfolio.js (the ones marked featured) -->
+      <ul class="sheet" data-gallery="featured"></ul>
     </section>
 
     <!-- About -->
@@ -128,24 +73,28 @@
           <h3>Portraits &amp; headshots</h3>
           <p>Up to one hour, one location. Professional headshots, seniors, or simply a great photo of you.</p>
           <p class="rate">from $200</p>
+          <a href="book.html?type=portrait" class="rate-book">Ask about a portrait</a>
         </li>
         <li>
           <h3>Family</h3>
           <p>About an hour at home, in a park or anywhere that means something to you. Any number of people.</p>
           <p class="rate">from $300</p>
+          <a href="book.html?type=family" class="rate-book">Ask about a family session</a>
         </li>
         <li>
           <h3>Events</h3>
           <p>Birthdays, anniversaries, reunions, showers and company gatherings, covered from arrival to last dance.</p>
           <p class="rate">from $500</p>
+          <a href="book.html?type=event" class="rate-book">Ask about an event</a>
         </li>
         <li>
           <h3>Milestones</h3>
           <p>Graduations, engagements, maternity and retirements. Planned around the day itself.</p>
           <p class="rate">from $250</p>
+          <a href="book.html?type=milestone" class="rate-book">Ask about a milestone</a>
         </li>
       </ul>
-      <p class="rates-note">Every session includes hand-edited images, a private online gallery and the right to print and share. Not sure what you need? <a href="#contact">Ask for a quote.</a></p>
+      <p class="rates-note">Every session includes hand-edited images, a private online gallery and the right to print and share. Not sure what you need? <a href="book.html">Ask for a quote.</a></p>
     </section>
 
     <!-- Kind words -->
@@ -162,49 +111,18 @@
     <section id="contact" class="block contact">
       <div class="contact-intro">
         <h2>Tell us about your day.</h2>
-        <p>We reply to every message within one business day.</p>
-        <!-- TODO: Replace with the real email, phone and service area. -->
-        <dl>
-          <dt>Email</dt>
-          <dd><a href="mailto:hello@example.com">hello@example.com</a></dd>
-          <dt>Phone</dt>
-          <dd><a href="tel:+15555550123">(555) 555-0123</a></dd>
-          <dt>Based in</dt>
-          <dd>Your town, and happy to travel</dd>
-        </dl>
+        <p>A few quick questions and we&rsquo;ll reply within one business day with availability and a quote.</p>
+        <a href="book.html" class="send">Start an inquiry</a>
       </div>
-      <form class="inquiry" id="inquiry" data-email="hello@example.com" novalidate>
-        <div class="field">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required>
-        </div>
-        <div class="field">
-          <label for="type">What are we photographing?</label>
-          <select id="type" name="type">
-            <option>An event</option>
-            <option>A portrait or headshot</option>
-            <option>My family</option>
-            <option>A milestone</option>
-            <option>Something else</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="date">Date, if you have one</label>
-          <input id="date" name="date" type="date">
-        </div>
-        <div class="field field-full">
-          <label for="message">A few details</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-        </div>
-        <div class="field-full form-foot">
-          <button type="submit" class="send">Send inquiry</button>
-          <p class="form-status" role="status" aria-live="polite"></p>
-        </div>
-      </form>
+      <!-- TODO: Replace with the real email, phone and service area. -->
+      <dl class="contact-details">
+        <dt>Call or text</dt>
+        <dd><a href="tel:+15555550123">(555) 555-0123</a></dd>
+        <dt>Email</dt>
+        <dd><a href="mailto:hello@example.com">hello@example.com</a></dd>
+        <dt>Based in</dt>
+        <dd>Your town, and happy to travel</dd>
+      </dl>
     </section>
   </main>
 
@@ -213,10 +131,10 @@
     <div class="colophon-row">
       <p>&copy; <span id="year">2026</span> Cre8tive Photography</p>
       <nav aria-label="Footer">
-        <a href="#work">Work</a>
+        <a href="work.html">Work</a>
         <a href="#about">About</a>
-        <a href="#sessions">Sessions</a>
-        <a href="#contact">Contact</a>
+        <a href="#sessions">Rates</a>
+        <a href="book.html">Book a session</a>
       </nav>
     </div>
   </footer>
@@ -226,11 +144,14 @@
     <div class="viewer-bar">
       <button type="button" class="viewer-prev">Previous</button>
       <span class="viewer-count" aria-live="polite"></span>
+      <span class="viewer-caption"></span>
       <button type="button" class="viewer-next">Next</button>
       <button type="button" class="viewer-close">Close</button>
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="data/portfolio.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/gallery.js"></script>
 </body>
 </html>

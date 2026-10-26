@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work | Cre8tive Photography</title>
+  <meta name="description" content="Events, portraits, family sessions and milestones photographed by Cre8tive, a family-run photography business.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <a href="index.html" class="wordmark" aria-label="Cre8tive, home">Cre<em>8</em>tive</a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <a href="work.html" aria-current="page">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#sessions">Rates</a>
+      <a href="book.html" class="nav-book">Book a session</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <div class="page-head">
+      <h1>Work. <em>Real people, real days.</em></h1>
+      <p>A few favorites from recent sessions. Choose a category, then select any photo to see it full size.</p>
+    </div>
+
+    <div class="tabs" role="group" aria-label="Show photos from">
+      <button type="button" data-tab="all" aria-pressed="true">All <span class="count"></span></button>
+      <button type="button" data-tab="events" aria-pressed="false">Events <span class="count"></span></button>
+      <button type="button" data-tab="portraits" aria-pressed="false">Portraits <span class="count"></span></button>
+      <button type="button" data-tab="family" aria-pressed="false">Family <span class="count"></span></button>
+      <button type="button" data-tab="milestones" aria-pressed="false">Milestones <span class="count"></span></button>
+    </div>
+
+    <!-- Photos come from data/portfolio.js -->
+    <ul class="sheet" data-gallery="all"></ul>
+    <p class="sheet-empty" hidden>New photos for this category are on the way.</p>
+    <noscript><p>Please turn on JavaScript to see the photos.</p></noscript>
+
+    <section class="block next-step">
+      <h2>See something you like?</h2>
+      <p>Tell us about your day and we&rsquo;ll get back to you within one business day.</p>
+      <a href="book.html" class="send">Book a session</a>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <p class="colophon-mark" aria-hidden="true">Cre<em>8</em>tive</p>
+    <div class="colophon-row">
+      <p>&copy; <span id="year">2026</span> Cre8tive Photography</p>
+      <nav aria-label="Footer">
+        <a href="work.html">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#sessions">Rates</a>
+        <a href="book.html">Book a session</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <img class="viewer-image" src="" alt="">
+    <div class="viewer-bar">
+      <button type="button" class="viewer-prev">Previous</button>
+      <span class="viewer-count" aria-live="polite"></span>
+      <span class="viewer-caption"></span>
+      <button type="button" class="viewer-next">Next</button>
+      <button type="button" class="viewer-close">Close</button>
+    </div>
+  </div>
+
+  <script src="data/portfolio.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

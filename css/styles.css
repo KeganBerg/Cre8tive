@@ -11,9 +11,9 @@
   --gray: #5c5a56;   /* secondary text, 6.9:1 on paper */
   --ink: #1e1d1b;
 
-  --display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
-  --text: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  --display: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --text: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", "SFMono-Regular", Menlo, monospace;
 
   --gutter: clamp(16px, 4vw, 56px);
   --gap: clamp(12px, 1.6vw, 24px);
@@ -38,12 +38,13 @@ img { display: block; max-width: 100%; height: auto; }
 h1, h2, h3 {
   margin: 0;
   font-family: var(--display);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
 }
 
-em { font-style: italic; }
+/* Headlines are two-tone (ink, then gray) instead of switching to italic. */
+em { font-style: normal; color: var(--mute); }
 
 p { margin: 0 0 1em; }
 
@@ -114,7 +115,9 @@ figcaption {
 
 .wordmark {
   font-family: var(--display);
-  font-size: 1.75rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
   line-height: 1;
   text-decoration: none;
 }
@@ -154,7 +157,7 @@ figcaption {
 
 .opening h1 {
   grid-column: 1 / span 9;
-  font-size: clamp(2.6rem, 7vw, 6.25rem);
+  font-size: clamp(2.5rem, 6vw, 5.25rem);
 }
 
 .opening-aside {
@@ -274,7 +277,8 @@ figcaption { margin-top: 10px; }
 .pull {
   margin: 0 0 1.2em;
   font-family: var(--display);
-  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.025em;
   font-size: clamp(1.9rem, 3.2vw, 2.75rem);
   line-height: 1.15;
 }
@@ -324,6 +328,8 @@ figcaption { margin-top: 10px; }
   margin: 0 0 20px;
   font-family: var(--display);
   font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
   line-height: 1.12;
   text-indent: -0.4em;
 }
@@ -443,6 +449,8 @@ textarea:focus {
   margin: 0 0 0 -0.04em;
   font-family: var(--display);
   font-size: 22vw;
+  font-weight: 600;
+  letter-spacing: -0.06em;
   line-height: 0.8;
   color: var(--rule);
   white-space: nowrap;

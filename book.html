@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a session | Cre8tive Photography</title>
+  <meta name="description" content="Tell Cre8tive Photography about your event, portrait, family or milestone session and get availability and a quote within one business day.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <a href="index.html" class="wordmark" aria-label="Cre8tive, home">Cre<em>8</em>tive</a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <a href="work.html">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#sessions">Rates</a>
+      <a href="book.html" class="nav-book" aria-current="page">Book a session</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <div class="page-head">
+      <h1>Book a session. <em>No commitment, just a conversation.</em></h1>
+      <p>Tell us a little about what you have in mind. We&rsquo;ll reply within one business day with our availability and a quote.</p>
+    </div>
+
+    <div class="booking">
+      <form class="booking-form" id="inquiry" novalidate>
+        <fieldset class="group">
+          <legend>What are we photographing?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="session" value="event"><span><b>An event</b>Birthdays, anniversaries, reunions, showers, company gatherings</span></label>
+            <label class="choice"><input type="radio" name="session" value="portrait"><span><b>A portrait or headshot</b>Professional headshots, seniors, or just you</span></label>
+            <label class="choice"><input type="radio" name="session" value="family"><span><b>My family</b>Any size, from newborns to great-grandparents</span></label>
+            <label class="choice"><input type="radio" name="session" value="milestone"><span><b>A milestone</b>Graduations, engagements, maternity, retirements</span></label>
+            <label class="choice"><input type="radio" name="session" value="other"><span><b>Something else</b>Tell us about it below</span></label>
+          </div>
+        </fieldset>
+
+        <!-- Only the set matching the chosen session is shown and sent. -->
+        <fieldset class="group" data-details="event" hidden disabled>
+          <legend>About the event</legend>
+          <div class="fields">
+            <div class="field">
+              <label for="event_kind">Kind of event</label>
+              <select id="event_kind" name="event_kind">
+                <option>Birthday</option><option>Anniversary</option><option>Family reunion</option>
+                <option>Baby or bridal shower</option><option>Company or community event</option><option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="event_date">Date</label>
+              <input id="event_date" name="date" type="date">
+            </div>
+            <div class="field">
+              <label for="event_start">Start time</label>
+              <input id="event_start" name="start_time" type="time">
+            </div>
+            <div class="field">
+              <label for="event_hours">Hours of coverage</label>
+              <select id="event_hours" name="hours">
+                <option>Not sure yet</option><option>1 hour</option><option>2 hours</option>
+                <option>3 hours</option><option>4 hours</option><option>5 hours or more</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="event_guests">About how many guests?</label>
+              <input id="event_guests" name="guests" type="number" min="1" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="event_venue">Venue or town</label>
+              <input id="event_venue" name="venue" type="text">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="group" data-details="portrait" hidden disabled>
+          <legend>About the portrait</legend>
+          <div class="fields">
+            <div class="field">
+              <label for="portrait_kind">What it&rsquo;s for</label>
+              <select id="portrait_kind" name="portrait_kind">
+                <option>Professional headshot</option><option>Senior portrait</option>
+                <option>Personal portrait</option><option>Couple</option><option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="portrait_people">How many people?</label>
+              <input id="portrait_people" name="people" type="number" min="1" value="1" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="portrait_date">Preferred date</label>
+              <input id="portrait_date" name="date" type="date">
+            </div>
+            <div class="field">
+              <label for="portrait_place">Where?</label>
+              <select id="portrait_place" name="location">
+                <option>Not sure, help me choose</option><option>Outdoors</option>
+                <option>At my home or office</option><option>Somewhere specific (tell us below)</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="group" data-details="family" hidden disabled>
+          <legend>About your family</legend>
+          <div class="fields">
+            <div class="field">
+              <label for="family_people">How many people?</label>
+              <input id="family_people" name="people" type="number" min="2" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="family_date">Preferred date</label>
+              <input id="family_date" name="date" type="date">
+            </div>
+            <div class="field">
+              <label for="family_place">Where?</label>
+              <select id="family_place" name="location">
+                <option>Not sure, help us choose</option><option>Outdoors or a park</option>
+                <option>At our home</option><option>Somewhere specific (tell us below)</option>
+              </select>
+            </div>
+            <div class="field checks">
+              <span class="checks-label">Joining us</span>
+              <label><input type="checkbox" name="joining" value="Little ones under 5"> Little ones under 5</label>
+              <label><input type="checkbox" name="joining" value="Pets"> Pets</label>
+              <label><input type="checkbox" name="joining" value="Grandparents"> Grandparents</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="group" data-details="milestone" hidden disabled>
+          <legend>About the milestone</legend>
+          <div class="fields">
+            <div class="field">
+              <label for="milestone_kind">Which milestone?</label>
+              <select id="milestone_kind" name="milestone_kind">
+                <option>Graduation</option><option>Engagement</option><option>Maternity</option>
+                <option>Newborn</option><option>Retirement</option><option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="milestone_date">Date</label>
+              <input id="milestone_date" name="date" type="date">
+            </div>
+            <div class="field field-full">
+              <label for="milestone_place">Where? (a town or place is fine)</label>
+              <input id="milestone_place" name="location" type="text">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="group" data-details="other" hidden disabled>
+          <legend>About it</legend>
+          <div class="fields">
+            <div class="field">
+              <label for="other_date">Date, if you have one</label>
+              <input id="other_date" name="date" type="date">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="group">
+          <legend>About you</legend>
+          <div class="fields">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span class="phone-note">(optional)</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+            <div class="field checks">
+              <span class="checks-label">Best way to reach you</span>
+              <label><input type="radio" name="contact_by" value="Email" checked> Email</label>
+              <label><input type="radio" name="contact_by" value="Phone call"> Phone call</label>
+              <label><input type="radio" name="contact_by" value="Text message"> Text message</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="group">
+          <legend>Anything else</legend>
+          <div class="fields">
+            <div class="field field-full">
+              <label for="message">Ideas, questions, anything we should know <span>(optional)</span></label>
+              <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <div class="field">
+              <label for="budget">Budget in mind <span>(optional)</span></label>
+              <select id="budget" name="budget">
+                <option>Not sure yet</option><option>Under $300</option><option>$300 to $600</option>
+                <option>$600 to $1,000</option><option>Over $1,000</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="heard">How did you hear about us? <span>(optional)</span></label>
+              <select id="heard" name="heard_about_us">
+                <option value="">Choose one</option><option>A friend or family member</option>
+                <option>Facebook</option><option>Instagram</option><option>Google</option>
+                <option>Saw us at an event</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Spam trap: hidden from people, bots fill it in. -->
+        <div class="trap" aria-hidden="true">
+          <label for="gotcha">Leave this empty</label>
+          <input id="gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-foot">
+          <button type="submit" class="send">Send inquiry</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+
+      <section class="thanks" id="thanks" tabindex="-1" hidden>
+        <h2>Thank you<span class="thanks-name"></span>.</h2>
+        <p class="thanks-email-app">Your email app should have opened with your inquiry written out. Press send there and it&rsquo;s on its way to us.</p>
+        <p>We&rsquo;ll get back to you within one business day with our availability and a quote. If your date is coming up fast, give us a call.</p>
+        <p><a href="work.html" class="arrow-link">Look through more of our work</a></p>
+      </section>
+
+      <aside class="booking-aside">
+        <h2>What happens next</h2>
+        <!-- TODO: Adjust to match how bookings actually work (deposit, contract, turnaround). -->
+        <p>We read every inquiry ourselves and reply within one business day. If it&rsquo;s a fit, we&rsquo;ll set up a short call to plan the details. A small deposit holds your date, and the rest is due on the day.</p>
+        <h2>Rather talk?</h2>
+        <!-- TODO: Replace with the real phone number and email. -->
+        <p><a href="tel:+15555550123" class="big-link">(555) 555-0123</a><br>
+          <a href="mailto:hello@example.com">hello@example.com</a></p>
+      </aside>
+    </div>
+
+    <section class="block faq" aria-labelledby="faq-title">
+      <div class="block-head">
+        <h2 id="faq-title">Questions people ask</h2>
+      </div>
+      <!-- TODO: Check every answer against how the business really works. -->
+      <dl class="faq-list">
+        <div>
+          <dt>How soon do we get our photos?</dt>
+          <dd>Portrait and family galleries are usually ready within two weeks. Events take up to three. We&rsquo;ll send a few sneak peeks sooner.</dd>
+        </div>
+        <div>
+          <dt>How many photos will we get?</dt>
+          <dd>It depends on the session, but you&rsquo;ll get every good one, edited by hand. That&rsquo;s usually 30 or more for a family session and hundreds for an event.</dd>
+        </div>
+        <div>
+          <dt>Do you travel?</dt>
+          <dd>Yes. Sessions in and around town are included, and we&rsquo;re happy to travel further for a small mileage fee.</dd>
+        </div>
+        <div>
+          <dt>What should we wear?</dt>
+          <dd>Whatever you feel good in. Solid colors and soft neutrals photograph well. We&rsquo;ll send a short guide once you book.</dd>
+        </div>
+        <div>
+          <dt>What if it rains?</dt>
+          <dd>We&rsquo;ll keep an eye on the forecast with you and reschedule outdoor sessions at no charge.</dd>
+        </div>
+        <div>
+          <dt>Can we print the photos?</dt>
+          <dd>Yes. Every gallery comes with a print release, so you can print and share them wherever you like.</dd>
+        </div>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <p class="colophon-mark" aria-hidden="true">Cre<em>8</em>tive</p>
+    <div class="colophon-row">
+      <p>&copy; <span id="year">2026</span> Cre8tive Photography</p>
+      <nav aria-label="Footer">
+        <a href="work.html">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#sessions">Rates</a>
+        <a href="book.html">Book a session</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/inquiry.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cre8tive Photography</title>
+  <meta name="description" content="Cre8tive is a family-run photography business making portraits and documenting events, families and milestones.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <a href="#top" class="wordmark" aria-label="Cre8tive, home">Cre<em>8</em>tive</a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <a href="work.html">Work</a>
+      <a href="#about">About</a>
+      <a href="#sessions">Rates</a>
+      <a href="book.html" class="nav-book">Book a session</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Opening -->
+    <section id="top" class="opening">
+      <h1>Photographs of the people you love, <em>made with&nbsp;care.</em></h1>
+      <div class="opening-aside">
+        <p>Events, portraits, families and the milestones in between. A family-run studio that takes its time with you.</p>
+        <a href="book.html" class="arrow-link">Book a session</a>
+      </div>
+      <figure class="opening-image">
+        <img src="images/hero.jpg" alt="A featured photograph from a recent session" width="2000" height="1250">
+        <figcaption><span class="frame">01</span> Summer reunion</figcaption>
+      </figure>
+    </section>
+
+    <!-- Work -->
+    <section id="work" class="block">
+      <div class="block-head">
+        <h2>Selected work</h2>
+        <a href="work.html" class="arrow-link">See all work</a>
+      </div>
+      <!-- Photos come from data/portfolio.js (the ones marked featured) -->
+      <ul class="sheet" data-gallery="featured"></ul>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="block about">
+      <figure class="about-image">
+        <img src="images/about.jpg" alt="The photographer behind Cre8tive" width="1000" height="1250" loading="lazy">
+      </figure>
+      <div class="about-text">
+        <h2 class="visually-hidden">About</h2>
+        <!-- TODO: Replace with the photographer's own words. -->
+        <blockquote class="pull">&ldquo;The best photos happen once people forget the camera is there.&rdquo;</blockquote>
+        <p>Cre8tive is a family business. Behind the camera is a photographer who has spent years learning how to put people at ease, whether it&rsquo;s a nervous first headshot or a reunion with forty relatives.</p>
+        <p>There&rsquo;s no rushing and no stiff posing. We get to know you a little, find good light, and let the real moments come. Then every image is edited by hand and delivered in a private online gallery you can share with the whole family.</p>
+      </div>
+    </section>
+
+    <!-- Sessions -->
+    <section id="sessions" class="block">
+      <div class="block-head">
+        <h2>Sessions &amp; rates</h2>
+      </div>
+      <!-- TODO: Replace the rates and details below with real numbers. -->
+      <ul class="rates">
+        <li>
+          <h3>Portraits &amp; headshots</h3>
+          <p>Up to one hour, one location. Professional headshots, seniors, or simply a great photo of you.</p>
+          <p class="rate">from $200</p>
+          <a href="book.html?type=portrait" class="rate-book">Ask about a portrait</a>
+        </li>
+        <li>
+          <h3>Family</h3>
+          <p>About an hour at home, in a park or anywhere that means something to you. Any number of people.</p>
+          <p class="rate">from $300</p>
+          <a href="book.html?type=family" class="rate-book">Ask about a family session</a>
+        </li>
+        <li>
+          <h3>Events</h3>
+          <p>Birthdays, anniversaries, reunions, showers and company gatherings, covered from arrival to last dance.</p>
+          <p class="rate">from $500</p>
+          <a href="book.html?type=event" class="rate-book">Ask about an event</a>
+        </li>
+        <li>
+          <h3>Milestones</h3>
+          <p>Graduations, engagements, maternity and retirements. Planned around the day itself.</p>
+          <p class="rate">from $250</p>
+          <a href="book.html?type=milestone" class="rate-book">Ask about a milestone</a>
+        </li>
+      </ul>
+      <p class="rates-note">Every session includes hand-edited images, a private online gallery and the right to print and share. Not sure what you need? <a href="book.html">Ask for a quote.</a></p>
+    </section>
+
+    <!-- Kind words -->
+    <section class="block words">
+      <h2 class="visually-hidden">What clients say</h2>
+      <!-- TODO: Replace with a real client review (with their permission). -->
+      <figure>
+        <blockquote>&ldquo;She had Grandpa laughing within five minutes. These are the photos we&rsquo;ll be passing down.&rdquo;</blockquote>
+        <figcaption>Sample review &middot; Family session</figcaption>
+      </figure>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="block contact">
+      <div class="contact-intro">
+        <h2>Tell us about your day.</h2>
+        <p>A few quick questions and we&rsquo;ll reply within one business day with availability and a quote.</p>
+        <a href="book.html" class="send">Start an inquiry</a>
+      </div>
+      <!-- TODO: Replace with the real email, phone and service area. -->
+      <dl class="contact-details">
+        <dt>Call or text</dt>
+        <dd><a href="tel:+15555550123">(555) 555-0123</a></dd>
+        <dt>Email</dt>
+        <dd><a href="mailto:hello@example.com">hello@example.com</a></dd>
+        <dt>Based in</dt>
+        <dd>Your town, and happy to travel</dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <p class="colophon-mark" aria-hidden="true">Cre<em>8</em>tive</p>
+    <div class="colophon-row">
+      <p>&copy; <span id="year">2026</span> Cre8tive Photography</p>
+      <nav aria-label="Footer">
+        <a href="work.html">Work</a>
+        <a href="#about">About</a>
+        <a href="#sessions">Rates</a>
+        <a href="book.html">Book a session</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <img class="viewer-image" src="" alt="">
+    <div class="viewer-bar">
+      <button type="button" class="viewer-prev">Previous</button>
+      <span class="viewer-count" aria-live="polite"></span>
+      <span class="viewer-caption"></span>
+      <button type="button" class="viewer-next">Next</button>
+      <button type="button" class="viewer-close">Close</button>
+    </div>
+  </div>
+
+  <script src="data/portfolio.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

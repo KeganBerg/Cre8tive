@@ -229,7 +229,7 @@ p { margin: 0; }
 .field { margin-bottom: 28px; }
 .field label { display: block; font-weight: 700; margin-bottom: 8px; }
 .field label span { font-weight: 400; color: var(--gray); }
-.field input[type="text"], .field input[type="date"], .field input[type="tel"], .field textarea { display: block; width: 100%; min-height: 56px; padding: 12px 16px; border: 2px solid var(--field); border-radius: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.4 var(--font); }
+.field input[type="text"], .field input[type="date"], .field input[type="tel"], .field input[type="email"], .field textarea { display: block; width: 100%; min-height: 56px; padding: 12px 16px; border: 2px solid var(--field); border-radius: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.4 var(--font); }
 .field textarea { min-height: 130px; resize: vertical; }
 .field input:focus, .field textarea:focus { border-color: var(--ink); outline: 3px solid var(--ink); outline-offset: 0; }
 .field [aria-invalid="true"], .occasions[aria-invalid="true"] .occasion { border-color: var(--signal); }
@@ -241,10 +241,20 @@ p { margin: 0; }
 .pick { display: flex; flex-wrap: wrap; gap: 4px 32px; }
 .trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .form-status { margin-top: 16px; font-weight: 700; }
-.form-status.is-error { color: #a1261d; }
+.form-status:empty { display: none; }
+.form-status.is-error { color: #a1261d; padding: 14px 18px; border-left: 4px solid #a1261d; background: #fbefee; }
+.form-status.is-error a { color: inherit; }
+.send[aria-busy="true"] { opacity: .7; cursor: progress; }
 .thanks { grid-column: 2; grid-row: 1; padding: 40px; background: var(--mist); }
 .thanks h2 { font-size: 40px; font-weight: 900; margin-bottom: 14px; }
 .thanks p { font-size: 20px; margin-bottom: 14px; }
+
+/* ---------- Page not found ---------- */
+.lost { padding-top: 96px; }
+.lost > * { max-width: 760px; }
+.lost h1 { font-size: 48px; font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
+.lost p { font-size: 20px; }
+.lost-links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
 
 /* ---------- Footer ---------- */
 

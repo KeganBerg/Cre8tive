@@ -4,149 +4,131 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cre8tive Photography</title>
-  <meta name="description" content="Cre8tive is a family-run photography business making portraits and documenting events, families and milestones.">
+  <meta name="description" content="Family, event, portrait and milestone photography by [Her name] in [Your town] and nearby.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="masthead">
-    <a href="#top" class="wordmark" aria-label="Cre8tive, home">Cre<em>8</em>tive</a>
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav id="site-nav" class="site-nav" aria-label="Main">
-      <a href="work.html">Work</a>
-      <a href="#about">About</a>
-      <a href="#sessions">Rates</a>
-      <a href="book.html" class="nav-book">Book a session</a>
-    </nav>
+  <header class="bar">
+    <div class="wrap">
+      <a href="index.html" class="logo" aria-label="Cre8tive, home">Cre8tive</a>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="work.html">My work</a>
+        <a href="about.html">About me</a>
+        <a href="index.html#prices">Prices</a>
+        <!-- TODO: Her real phone number (here and in every "tel:" link). -->
+        <a href="tel:+15555550123" class="call">Call (555) 555-0123</a>
+      </nav>
+      <a href="book.html" class="btn"><span class="shutter" aria-hidden="true"></span>Check a date</a>
+      <a href="tel:+15555550123" class="btn light call-me">Call me</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="lines" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
+    </div>
   </header>
 
   <main id="main">
-    <!-- Opening -->
-    <section id="top" class="opening">
-      <h1>Photographs of the people you love, <em>made with&nbsp;care.</em></h1>
-      <div class="opening-aside">
-        <p>Events, portraits, families and the milestones in between. A family-run studio that takes its time with you.</p>
-        <a href="book.html" class="arrow-link">Book a session</a>
-      </div>
-      <figure class="opening-image">
-        <img src="images/hero.jpg" alt="A featured photograph from a recent session" width="2000" height="1250">
-        <figcaption><span class="frame">01</span> Summer reunion</figcaption>
-      </figure>
-    </section>
-
-    <!-- Work -->
-    <section id="work" class="block">
-      <div class="block-head">
-        <h2>Selected work</h2>
-        <a href="work.html" class="arrow-link">See all work</a>
-      </div>
-      <!-- Photos come from data/portfolio.js (the ones marked featured) -->
-      <ul class="sheet" data-gallery="featured"></ul>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="block about">
-      <figure class="about-image">
-        <img src="images/about.jpg" alt="The photographer behind Cre8tive" width="1000" height="1250" loading="lazy">
-      </figure>
-      <div class="about-text">
-        <h2 class="visually-hidden">About</h2>
-        <!-- TODO: Replace with the photographer's own words. -->
-        <blockquote class="pull">&ldquo;The best photos happen once people forget the camera is there.&rdquo;</blockquote>
-        <p>Cre8tive is a family business. Behind the camera is a photographer who has spent years learning how to put people at ease, whether it&rsquo;s a nervous first headshot or a reunion with forty relatives.</p>
-        <p>There&rsquo;s no rushing and no stiff posing. We get to know you a little, find good light, and let the real moments come. Then every image is edited by hand and delivered in a private online gallery you can share with the whole family.</p>
+    <!-- TODO: Fill in everything in [brackets] across the site with her real details. -->
+    <section class="hero">
+      <!-- Her single best photo: replace images/hero.jpg (wide, about 2400px across). -->
+      <div class="frame" role="img" aria-label="A favorite photo from a recent family session">
+        <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-bl"></i><i class="corner c-br"></i>
+        <i class="focus"></i>
+        <p class="readout" aria-hidden="true"><span>[Your town]</span><span class="settings"><span>1/250</span><span>f/2.8</span><span>ISO 400</span></span></p>
+        <div class="hello">
+          <h1>Hi, I&rsquo;m [Her name].</h1>
+          <p>I photograph families, events and milestones in [Your town] and nearby.</p>
+        </div>
       </div>
     </section>
 
-    <!-- Sessions -->
-    <section id="sessions" class="block">
-      <div class="block-head">
-        <h2>Sessions &amp; rates</h2>
-      </div>
-      <!-- TODO: Replace the rates and details below with real numbers. -->
-      <ul class="rates">
-        <li>
-          <h3>Portraits &amp; headshots</h3>
-          <p>Up to one hour, one location. Professional headshots, seniors, or simply a great photo of you.</p>
-          <p class="rate">from $200</p>
-          <a href="book.html?type=portrait" class="rate-book">Ask about a portrait</a>
-        </li>
-        <li>
-          <h3>Family</h3>
-          <p>About an hour at home, in a park or anywhere that means something to you. Any number of people.</p>
-          <p class="rate">from $300</p>
-          <a href="book.html?type=family" class="rate-book">Ask about a family session</a>
-        </li>
-        <li>
-          <h3>Events</h3>
-          <p>Birthdays, anniversaries, reunions, showers and company gatherings, covered from arrival to last dance.</p>
-          <p class="rate">from $500</p>
-          <a href="book.html?type=event" class="rate-book">Ask about an event</a>
-        </li>
-        <li>
-          <h3>Milestones</h3>
-          <p>Graduations, engagements, maternity and retirements. Planned around the day itself.</p>
-          <p class="rate">from $250</p>
-          <a href="book.html?type=milestone" class="rate-book">Ask about a milestone</a>
-        </li>
-      </ul>
-      <p class="rates-note">Every session includes hand-edited images, a private online gallery and the right to print and share. Not sure what you need? <a href="book.html">Ask for a quote.</a></p>
-    </section>
+    <div class="wrap">
+      <section class="section intro" aria-labelledby="intro-title">
+        <div class="portrait bracketed"><img src="images/about.jpg" alt="[Her name] with her camera" width="1000" height="1250"></div>
+        <div>
+          <h2 id="intro-title">About me, in my words</h2>
+          <!-- TODO: A few lines in her own voice. -->
+          <p>I&rsquo;ve been taking pictures of the people around me for as long as I can remember. These days I do it for families like yours: no stiff posing, no rushing, just real moments and good light.</p>
+          <a href="about.html" class="arrow">More about me</a>
+        </div>
+      </section>
 
-    <!-- Kind words -->
-    <section class="block words">
-      <h2 class="visually-hidden">What clients say</h2>
-      <!-- TODO: Replace with a real client review (with their permission). -->
-      <figure>
-        <blockquote>&ldquo;She had Grandpa laughing within five minutes. These are the photos we&rsquo;ll be passing down.&rdquo;</blockquote>
-        <figcaption>Sample review &middot; Family session</figcaption>
-      </figure>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="block contact">
-      <div class="contact-intro">
-        <h2>Tell us about your day.</h2>
-        <p>A few quick questions and we&rsquo;ll reply within one business day with availability and a quote.</p>
-        <a href="book.html" class="send">Start an inquiry</a>
+      <div class="rows">
+        <!-- Photos come from data/portfolio.js -->
+        <section class="section" aria-labelledby="row-family">
+          <div class="section-head"><h2 id="row-family">Families</h2><span class="hint"><span data-count="family"></span> photos, swipe &rarr;</span><a href="work.html#family" class="arrow">See all</a></div>
+          <ul class="strip" data-row="family"></ul>
+        </section>
+        <section class="section" aria-labelledby="row-events">
+          <div class="section-head"><h2 id="row-events">Events</h2><span class="hint"><span data-count="events"></span> photos, swipe &rarr;</span><a href="work.html#events" class="arrow">See all</a></div>
+          <ul class="strip" data-row="events"></ul>
+        </section>
+        <section class="section" aria-labelledby="row-pm">
+          <div class="section-head"><h2 id="row-pm">Portraits &amp; milestones</h2><span class="hint"><span data-count="portraits milestones"></span> photos, swipe &rarr;</span><a href="work.html#portraits" class="arrow">See all</a></div>
+          <ul class="strip" data-row="portraits milestones"></ul>
+        </section>
       </div>
-      <!-- TODO: Replace with the real email, phone and service area. -->
-      <dl class="contact-details">
-        <dt>Call or text</dt>
-        <dd><a href="tel:+15555550123">(555) 555-0123</a></dd>
-        <dt>Email</dt>
-        <dd><a href="mailto:hello@example.com">hello@example.com</a></dd>
-        <dt>Based in</dt>
-        <dd>Your town, and happy to travel</dd>
-      </dl>
-    </section>
+
+      <section class="section review" aria-label="A client review">
+        <!-- TODO: One real review, with permission, and a photo from that session. -->
+        <figure class="photo bracketed"><img src="images/portfolio/family-5.jpg" alt="The Moore family at their session" width="1500" height="1000" loading="lazy"></figure>
+        <div>
+          <blockquote>She had Grandpa laughing within five minutes. These are the photos we&rsquo;ll be passing down.</blockquote>
+          <cite>Linda, family session</cite>
+          <p class="cap">Sample review</p>
+        </div>
+      </section>
+
+      <section class="section" id="prices" aria-labelledby="prices-title">
+        <div class="section-head"><h2 id="prices-title">Prices</h2></div>
+        <!-- TODO: Her real starting prices and what each includes. -->
+        <ul class="prices">
+          <li><details class="price"><summary><h3>Family session</h3><span class="from">from $300</span></summary>
+            <div class="more"><p>About an hour at your home, a park, or anywhere that means something to you. Any number of people, pets welcome.</p><a href="book.html?type=family" class="arrow">Ask about a family session</a></div></details></li>
+          <li><details class="price"><summary><h3>Portraits &amp; headshots</h3><span class="from">from $200</span></summary>
+            <div class="more"><p>Up to an hour in one place. Professional headshots, senior portraits, or simply a great photo of you.</p><a href="book.html?type=portrait" class="arrow">Ask about a portrait</a></div></details></li>
+          <li><details class="price"><summary><h3>Events</h3><span class="from">from $500</span></summary>
+            <div class="more"><p>Birthdays, anniversaries, reunions and showers, covered from the first guest to the last dance.</p><a href="book.html?type=event" class="arrow">Ask about an event</a></div></details></li>
+          <li><details class="price"><summary><h3>Milestones</h3><span class="from">from $250</span></summary>
+            <div class="more"><p>Graduations, engagements, maternity and retirements, planned around the day itself.</p><a href="book.html?type=milestone" class="arrow">Ask about a milestone</a></div></details></li>
+        </ul>
+        <p class="note">Every session includes hand-edited photos in a private online gallery you can print from. A $50 deposit holds your date, and the rest is due on the day.</p>
+      </section>
+
+      <section class="section" aria-label="Contact">
+        <div class="reach">
+          <a href="tel:+15555550123" class="tel">Call or text me: (555) 555-0123</a>
+          <p><a href="mailto:hello@example.com">hello@example.com</a> &middot; Based in [Your town], happy to travel</p>
+          <a href="book.html" class="btn"><span class="shutter" aria-hidden="true"></span>Check a date</a>
+        </div>
+      </section>
+    </div>
   </main>
 
-  <footer class="colophon">
-    <p class="colophon-mark" aria-hidden="true">Cre<em>8</em>tive</p>
-    <div class="colophon-row">
-      <p>&copy; <span id="year">2026</span> Cre8tive Photography</p>
+  <footer class="foot">
+    <div class="wrap">
+      <a href="index.html" class="logo">Cre8tive</a>
       <nav aria-label="Footer">
-        <a href="work.html">Work</a>
-        <a href="#about">About</a>
-        <a href="#sessions">Rates</a>
-        <a href="book.html">Book a session</a>
+        <a href="work.html">My work</a>
+        <a href="about.html">About me</a>
+        <a href="index.html#prices">Prices</a>
+        <a href="book.html">Check a date</a>
       </nav>
+      <p>&copy; <span id="year">2026</span> Cre8tive Photography</p>
     </div>
   </footer>
 
+  <div class="dock"><a href="book.html" class="btn"><span class="shutter" aria-hidden="true"></span>Check a date with me</a></div>
+
   <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
-    <img class="viewer-image" src="" alt="">
+    <div class="viewer-top"><button type="button" class="viewer-close">Close &times;</button></div>
+    <div class="viewer-stage"><img class="viewer-image" src="" alt=""></div>
     <div class="viewer-bar">
-      <button type="button" class="viewer-prev">Previous</button>
-      <span class="viewer-count" aria-live="polite"></span>
-      <span class="viewer-caption"></span>
-      <button type="button" class="viewer-next">Next</button>
-      <button type="button" class="viewer-close">Close</button>
+      <button type="button" class="viewer-prev">&larr; Back</button>
+      <p class="viewer-mid"><span class="viewer-count" aria-live="polite"></span><span class="viewer-caption"></span></p>
+      <button type="button" class="viewer-next">Next &rarr;</button>
     </div>
   </div>
 

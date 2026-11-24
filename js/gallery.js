@@ -1,104 +1,72 @@
-// Builds photo grids from data/portfolio.js.
-//   <ul class="sheet" data-gallery="featured">  the home page highlights
-//   <ul class="sheet" data-gallery="all">       the Work page, with category buttons
+// Builds the photo rows and sections from data/portfolio.js.
+//   <ul class="strip" data-row="family">                Home: one row per kind of session
+//   <ul class="strip" data-row="portraits milestones">   (several kinds share a row)
+//   <ul class="story" data-story="events">              My work: one section per kind
+//   <span data-count="family"></span>                    how many photos of that kind
 (function () {
   "use strict";
 
-  var LABELS = { events: "Events", portraits: "Portraits", family: "Family", milestones: "Milestones" };
   var all = window.PORTFOLIO || [];
 
-  function pad(n) { return n < 10 ? "0" + n : String(n); }
+  function of(kinds) {
+    var list = kinds.split(" ");
+    return all.filter(function (p) { return list.indexOf(p.category) !== -1; });
+  }
 
-  // Arrange photos into full rows: a wide print beside a tall one, or three
-  // tall prints. Leftovers share a row in halves. Returns [{photo, span}].
-  function layout(photos) {
-    var wide = photos.filter(function (p) { return p.shape === "wide"; });
-    var tall = photos.filter(function (p) { return p.shape !== "wide"; });
+  // One tappable photo. Tapping opens the full-screen viewer on that set.
+  function item(photos, i, className) {
+    var photo = photos[i];
+    var li = document.createElement("li");
+    if (className) li.className = className;
+
+    var button = document.createElement("button");
+    button.type = "button";
+    button.className = "shot bracketed";
+    button.setAttribute("aria-label", "See full screen: " + photo.alt);
+    button.addEventListener("click", function () { window.Cre8tiveViewer.open(photos, i); });
+
+    var img = document.createElement("img");
+    img.src = photo.src;
+    img.alt = photo.alt;
+    img.loading = "lazy";
+    button.appendChild(img);
+    li.appendChild(button);
+
+    if (photo.caption) {
+      var cap = document.createElement("p");
+      cap.className = "cap";
+      cap.textContent = photo.caption;
+      li.appendChild(cap);
+    }
+    return li;
+  }
+
+  // Takes turns between kinds, so a shared row shows some of each.
+  function mixed(kinds) {
+    var lists = kinds.split(" ").map(of);
     var out = [];
-    var lastMixed = false;
-    var flip = false;
-
-    function add(photo, span) { out.push({ photo: photo, span: span }); }
-
-    while (wide.length || tall.length) {
-      if (tall.length >= 3 && (lastMixed || !wide.length)) {
-        add(tall.shift(), 4); add(tall.shift(), 4); add(tall.shift(), 4);
-        lastMixed = false;
-      } else if (wide.length && tall.length) {
-        if (flip) { add(tall.shift(), 4); add(wide.shift(), 8); }
-        else { add(wide.shift(), 8); add(tall.shift(), 4); }
-        flip = !flip;
-        lastMixed = true;
-      } else if (wide.length >= 2) {
-        add(wide.shift(), 6); add(wide.shift(), 6);
-      } else if (wide.length) {
-        add(wide.shift(), 12);
-      } else {
-        while (tall.length) add(tall.shift(), 6);
-      }
+    for (var i = 0; out.length < all.length && lists.some(function (l) { return l[i]; }); i++) {
+      lists.forEach(function (l) { if (l[i]) out.push(l[i]); });
     }
     return out;
   }
 
-  function render(sheet, photos) {
-    var cells = layout(photos);
-    var ordered = cells.map(function (c) { return c.photo; });
-    sheet.innerHTML = "";
+  // Home rows: up to six photos (four show on a computer, all six swipe on a phone).
+  document.querySelectorAll("[data-row]").forEach(function (row) {
+    var photos = mixed(row.dataset.row).slice(0, 6);
+    photos.forEach(function (_, i) { row.appendChild(item(photos, i)); });
+  });
 
-    cells.forEach(function (cell, i) {
-      var photo = cell.photo;
-      var li = document.createElement("li");
-      li.className = "frame-item span-" + cell.span + (photo.shape === "wide" ? " is-wide" : " is-tall");
+  // My work sections read like an album page: one wide photo, then three, then two.
+  var PATTERN = ["s-big", "", "", "", "s-half", "s-half"];
+  document.querySelectorAll("[data-story]").forEach(function (section) {
+    var photos = of(section.dataset.story);
+    var wide = photos.findIndex(function (p) { return p.shape === "wide"; });
+    if (wide > 0) photos.unshift(photos.splice(wide, 1)[0]);  // lead with a wide photo
+    photos.forEach(function (_, i) { section.appendChild(item(photos, i, PATTERN[i % PATTERN.length])); });
+  });
 
-      var button = document.createElement("button");
-      button.type = "button";
-      button.className = "frame-open";
-      button.setAttribute("aria-label", "View larger: " + photo.alt);
-      button.addEventListener("click", function () { window.Cre8tiveViewer.open(ordered, i); });
-
-      var img = document.createElement("img");
-      img.src = photo.src;
-      img.alt = photo.alt;
-      img.loading = "lazy";
-      button.appendChild(img);
-
-      var cap = document.createElement("p");
-      cap.className = "caption";
-      cap.innerHTML = '<span class="frame">' + pad(i + 1) + "</span> ";
-      cap.appendChild(document.createTextNode(photo.caption || LABELS[photo.category]));
-
-      li.appendChild(button);
-      li.appendChild(cap);
-      sheet.appendChild(li);
-    });
-  }
-
-  document.querySelectorAll("[data-gallery]").forEach(function (sheet) {
-    if (sheet.dataset.gallery === "featured") {
-      render(sheet, all.filter(function (p) { return p.featured; }));
-      return;
-    }
-
-    // Work page: category buttons filter the grid.
-    var tabs = document.querySelectorAll("[data-tab]");
-    var empty = document.querySelector(".sheet-empty");
-
-    function show(key) {
-      var photos = key === "all" ? all : all.filter(function (p) { return p.category === key; });
-      tabs.forEach(function (tab) {
-        tab.setAttribute("aria-pressed", String(tab.dataset.tab === key));
-      });
-      render(sheet, photos);
-      if (empty) empty.hidden = photos.length > 0;
-    }
-
-    tabs.forEach(function (tab) {
-      var key = tab.dataset.tab;
-      var n = key === "all" ? all.length : all.filter(function (p) { return p.category === key; }).length;
-      tab.querySelector(".count").textContent = n;
-      tab.addEventListener("click", function () { show(key); });
-    });
-
-    show("all");
+  document.querySelectorAll("[data-count]").forEach(function (el) {
+    el.textContent = Math.min(of(el.dataset.count).length, el.closest(".hint") ? 6 : Infinity);
   });
 })();

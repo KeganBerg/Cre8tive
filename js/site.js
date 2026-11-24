@@ -11,7 +11,8 @@
 
   function setMenu(open) {
     menuButton.setAttribute("aria-expanded", String(open));
-    menuButton.textContent = open ? "Close" : "Menu";
+    var label = menuButton.querySelector(".menu-label");
+    if (label) label.textContent = open ? "Close" : "Menu";
     nav.classList.toggle("is-open", open);
   }
 
@@ -43,7 +44,7 @@
     image.src = photo.src;
     image.alt = photo.alt;
     caption.textContent = photo.caption || "";
-    count.textContent = (current + 1) + " / " + photos.length;
+    count.textContent = (current + 1) + " of " + photos.length;
   }
 
   function open(list, index) {

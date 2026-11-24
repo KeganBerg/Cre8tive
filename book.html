@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Check a date | Cre8tive Photography</title>
+  <meta name="description" content="Ask [Her name] about a date for a family session, event, portrait or milestone. She replies within a day.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="no-dock">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="bar">
+    <div class="wrap">
+      <a href="index.html" class="logo" aria-label="Cre8tive, home">Cre8tive</a>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="work.html">My work</a>
+        <a href="about.html">About me</a>
+        <a href="index.html#prices">Prices</a>
+        <!-- TODO: Her real phone number (here and in every "tel:" link). -->
+        <a href="tel:+15555550123" class="call">Call (555) 555-0123</a>
+      </nav>
+      <a href="book.html" class="btn"><span class="shutter" aria-hidden="true"></span>Check a date</a>
+      <a href="tel:+15555550123" class="btn light call-me">Call me</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="lines" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <div class="booking">
+      <aside class="booking-side">
+        <div class="intro-card">
+          <div class="face bracketed"><img src="images/about.jpg" alt="" width="1000" height="1250"></div>
+          <div>
+            <h1>Ask me about a date</h1>
+            <p class="reply">I&rsquo;ll text or email you back within a day.</p>
+          </div>
+        </div>
+        <div class="rather">
+          <h2>Rather talk?</h2>
+          <a href="tel:+15555550123" class="tel">Call or text (555) 555-0123</a>
+        </div>
+        <div class="faq-wrap">
+          <h2>Questions people ask</h2>
+          <!-- TODO: Check every answer against how she really works. -->
+          <div class="faq">
+            <details><summary>How soon do I get my photos?</summary><p>Usually within two weeks, and a little longer for big events. I&rsquo;ll send a few sneak peeks sooner.</p></details>
+            <details><summary>What if it rains?</summary><p>We&rsquo;ll watch the forecast together and move outdoor sessions to a better day at no charge.</p></details>
+            <details><summary>What should we wear?</summary><p>Whatever you feel good in. Solid colors and soft neutrals photograph well. I&rsquo;ll send a short guide once you book.</p></details>
+            <details><summary>Can I print them?</summary><p>Yes. Every gallery comes with a print release, so you can print and share them wherever you like.</p></details>
+          </div>
+        </div>
+      </aside>
+
+      <form class="form" id="inquiry" novalidate>
+        <fieldset>
+          <legend class="big">What&rsquo;s the occasion?</legend>
+          <div class="occasions">
+            <label class="occasion"><input type="radio" name="occasion" value="family"><span class="dot" aria-hidden="true"></span>A family session</label>
+            <label class="occasion"><input type="radio" name="occasion" value="event"><span class="dot" aria-hidden="true"></span>An event or party</label>
+            <label class="occasion"><input type="radio" name="occasion" value="portrait"><span class="dot" aria-hidden="true"></span>A portrait or headshot</label>
+            <label class="occasion"><input type="radio" name="occasion" value="milestone"><span class="dot" aria-hidden="true"></span>A milestone (grad, baby, wedding&hellip;)</label>
+            <label class="occasion"><input type="radio" name="occasion" value="other"><span class="dot" aria-hidden="true"></span>Something else</label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="date">When?</label>
+          <div class="when">
+            <input id="date" name="date" type="date">
+            <label class="tick"><input type="checkbox" id="date-unsure" name="date_unsure" value="Not sure yet"> Not sure yet</label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="where">Where? <span>(town or venue)</span></label>
+          <input id="where" name="where" type="text">
+        </div>
+        <div class="grid2">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="contact">Phone or email</label>
+            <input id="contact" name="contact" type="text" autocomplete="email" required>
+          </div>
+        </div>
+        <fieldset>
+          <legend>Best way to reach you</legend>
+          <div class="pick">
+            <label><input type="radio" name="contact_by" value="Text" checked> Text</label>
+            <label><input type="radio" name="contact_by" value="Call"> Call</label>
+            <label><input type="radio" name="contact_by" value="Email"> Email</label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="message">Anything else? <span>(optional)</span></label>
+          <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+
+        <!-- Spam trap: hidden from people, bots fill it in. -->
+        <div class="trap" aria-hidden="true">
+          <label for="gotcha">Leave this empty</label>
+          <input id="gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="btn wide send"><span class="shutter" aria-hidden="true"></span>Send to [Her name]</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <section class="thanks" id="thanks" tabindex="-1" hidden>
+        <h2>Thanks<span class="thanks-name"></span>.</h2>
+        <p class="thanks-email-app">Your email app should have opened with your note written out. Press send there and it&rsquo;s on its way to me.</p>
+        <p>I&rsquo;ll be in touch within a day. If your date is coming up fast, call or text me at (555) 555-0123.</p>
+        <p><a href="work.html" class="arrow">Look through more of my work</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <a href="index.html" class="logo">Cre8tive</a>
+      <nav aria-label="Footer">
+        <a href="work.html">My work</a>
+        <a href="about.html">About me</a>
+        <a href="index.html#prices">Prices</a>
+        <a href="book.html">Check a date</a>
+      </nav>
+      <p>&copy; <span id="year">2026</span> Cre8tive Photography</p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/inquiry.js"></script>
+</body>
+</html>

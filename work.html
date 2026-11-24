@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My work | Cre8tive Photography</title>
+  <meta name="description" content="Family, event, portrait and milestone photos by [Her name] of Cre8tive Photography.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="bar">
+    <div class="wrap">
+      <a href="index.html" class="logo" aria-label="Cre8tive, home">Cre8tive</a>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="work.html" aria-current="page">My work</a>
+        <a href="about.html">About me</a>
+        <a href="index.html#prices">Prices</a>
+        <!-- TODO: Her real phone number (here and in every "tel:" link). -->
+        <a href="tel:+15555550123" class="call">Call (555) 555-0123</a>
+      </nav>
+      <a href="book.html" class="btn"><span class="shutter" aria-hidden="true"></span>Check a date</a>
+      <a href="tel:+15555550123" class="btn light call-me">Call me</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="lines" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <div class="page-head">
+      <h1>My work</h1>
+      <p class="lede">A few favorites from each kind of session. Tap any photo to see it full screen.</p>
+      <ul class="jump" aria-label="Jump to">
+        <li><a href="#family">Families <span class="n" data-count="family"></span></a></li>
+        <li><a href="#events">Events <span class="n" data-count="events"></span></a></li>
+        <li><a href="#portraits">Portraits <span class="n" data-count="portraits"></span></a></li>
+        <li><a href="#milestones">Milestones <span class="n" data-count="milestones"></span></a></li>
+      </ul>
+    </div>
+
+    <!-- Photos come from data/portfolio.js. Each section shows that kind of session. -->
+    <section class="section" id="family" aria-labelledby="h-family">
+      <div class="section-head"><h2 id="h-family">Families</h2></div>
+      <ul class="story" data-story="family"></ul>
+    </section>
+    <section class="section" id="events" aria-labelledby="h-events">
+      <div class="section-head"><h2 id="h-events">Events</h2></div>
+      <ul class="story" data-story="events"></ul>
+    </section>
+    <section class="section" id="portraits" aria-labelledby="h-portraits">
+      <div class="section-head"><h2 id="h-portraits">Portraits</h2></div>
+      <ul class="story" data-story="portraits"></ul>
+    </section>
+    <section class="section" id="milestones" aria-labelledby="h-milestones">
+      <div class="section-head"><h2 id="h-milestones">Milestones</h2></div>
+      <ul class="story" data-story="milestones"></ul>
+    </section>
+    <noscript><p>Please turn on JavaScript to see the photos.</p></noscript>
+
+    <div class="more-cta"><a href="book.html" class="btn"><span class="shutter" aria-hidden="true"></span>Like what you see? Check a date</a></div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <a href="index.html" class="logo">Cre8tive</a>
+      <nav aria-label="Footer">
+        <a href="work.html">My work</a>
+        <a href="about.html">About me</a>
+        <a href="index.html#prices">Prices</a>
+        <a href="book.html">Check a date</a>
+      </nav>
+      <p>&copy; <span id="year">2026</span> Cre8tive Photography</p>
+    </div>
+  </footer>
+
+  <div class="dock"><a href="book.html" class="btn"><span class="shutter" aria-hidden="true"></span>Check a date with me</a></div>
+
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <div class="viewer-top"><button type="button" class="viewer-close">Close &times;</button></div>
+    <div class="viewer-stage"><img class="viewer-image" src="" alt=""></div>
+    <div class="viewer-bar">
+      <button type="button" class="viewer-prev">&larr; Back</button>
+      <p class="viewer-mid"><span class="viewer-count" aria-live="polite"></span><span class="viewer-caption"></span></p>
+      <button type="button" class="viewer-next">Next &rarr;</button>
+    </div>
+  </div>
+
+  <script src="data/portfolio.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

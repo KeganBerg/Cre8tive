@@ -26,7 +26,7 @@ photo opens full screen with Back, Next and Close buttons (and swiping).
 | Path | What it is |
 | --- | --- |
 | `data/portfolio.js` | **The list of portfolio photos.** Edit this to add or remove photos |
-| `js/config.js` | **The inbox inquiries go to**, and the optional Formspree link |
+| `js/config.js` | **Her email, phone and the Formspree link** for the inquiry form |
 | `css/styles.css` | Colors, fonts and layout. Palette lives at the top in `:root` |
 | `js/site.js` | Menu and photo viewer, used on every page |
 | `js/gallery.js` | Builds the photo rows and sections from `data/portfolio.js` |
@@ -48,17 +48,19 @@ kind opens with its first landscape photo shown large, then three, then two.
 
 ## Getting inquiries
 
-To have inquiries land straight in her inbox, with a thank-you shown right on the page,
-connect a free form service. Until that's done, sending the form opens the visitor's email
-app with their note written out instead, which many people don't have set up.
+The "Check a date" form sends straight to her inbox through [Formspree](https://formspree.io)
+and shows a thank-you on the page. If sending fails (no signal, Formspree down), the form
+keeps everything they typed and shows her phone and email instead.
 
-1. Create a free account at [Formspree](https://formspree.io) and make a new form.
-2. Copy its URL (looks like `https://formspree.io/f/abcdwxyz`).
-3. Paste it into `formEndpoint` in `js/config.js`.
+To connect it, paste the Formspree form link into `formEndpoint` in `js/config.js`. Step
+by step instructions are in [SETUP.md](SETUP.md). Until the link is filled in, sending the
+form opens the visitor's own email app with their note written out.
 
 The form asks only what she needs to reply: the occasion, when and where, a name, a phone
-number or email, and how they'd like to be contacted. It includes a hidden spam trap. Each
-price on Home links to the form with that occasion already picked (`book.html?type=family`).
+number or email, and how they'd like to be contacted. Each inquiry arrives titled like
+"New inquiry: Family session from Pat Lee", and if they gave an email she can just press
+Reply. It includes a hidden spam trap. Each price on Home links to the form with that
+occasion already picked (`book.html?type=family`).
 
 ## Before going live
 
@@ -71,13 +73,12 @@ to find everything else that still needs real content:
    behind-the-scenes photos (`images/about.jpg`, `images/bts-1.jpg`, `images/bts-2.jpg`).
 3. **Rates.** Replace the sample "from" prices and session details.
 4. **Reviews.** Replace the sample quotes with real ones (with permission).
-5. **Contact details.** Update the email (in `js/config.js` too), phone and service area.
+5. **Contact details.** Update the email and phone (in `js/config.js` too) and service area.
 6. **Questions people ask.** Check every answer on the booking page against how she
    really works.
 
-## Publishing on GitHub Pages
+## Putting it online
 
-In the repository on GitHub, go to **Settings → Pages**, choose **Deploy from a branch**,
-pick `main` and `/ (root)`, and save. The site will appear at
-`https://keganberg.github.io/cre8tive/` within a minute or two. A custom domain can be
-added on the same page.
+See [SETUP.md](SETUP.md) for plain steps: Formspree for the form, Cloudflare Pages
+(free) for hosting, and buying a web address. `_headers` holds Cloudflare's settings and
+`404.html` is the "page not found" page; neither needs editing.

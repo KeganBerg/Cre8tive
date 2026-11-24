@@ -103,8 +103,9 @@
     var data = new FormData(form);
     var occasion = LABELS[data.get("occasion")];
 
-    // Without a form service, fall back to the visitor's email app.
-    if (!config.formEndpoint) {
+    // Until the Formspree link is filled in, fall back to the visitor's email app.
+    var endpoint = String(config.formEndpoint || "").trim();
+    if (!/^https:\/\/formspree\.io\/f\/[A-Za-z0-9]+$/.test(endpoint) || /YOUR_FORM_ID/.test(endpoint)) {
       window.location.href = "mailto:" + config.email +
         "?subject=" + encodeURIComponent("Photo inquiry: " + occasion) +
         "&body=" + encodeURIComponent(summary(data));
@@ -113,26 +114,58 @@
     }
 
     sendButton.disabled = true;
+    sendButton.setAttribute("aria-busy", "true");
     status.className = "form-status";
-    status.textContent = "Sending…";
-    data.set("occasion", occasion);
-    data.append("_subject", "New inquiry: " + occasion);
+    status.textContent = "Sending\u2026";
 
-    fetch(config.formEndpoint, { method: "POST", body: data, headers: { Accept: "application/json" } })
+    data.set("occasion", occasion);
+    if (unsure.checked) data.set("date", "Not sure yet");
+    data.delete("date_unsure");
+    // Formspree uses "email" as the reply-to, so she can just press Reply.
+    if (data.get("contact_by") === "Email") data.set("email", contact.value.trim());
+    data.append("_subject", "New inquiry: " + occasion + " from " + form.querySelector("#name").value.trim());
+
+    // Give up after 20 seconds so nobody waits on a spinning button.
+    var controller = window.AbortController ? new AbortController() : null;
+    var timer = controller && setTimeout(function () { controller.abort(); }, 20000);
+
+    fetch(endpoint, {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" },
+      signal: controller ? controller.signal : undefined
+    })
       .then(function (res) {
-        if (!res.ok) throw new Error(res.status);
+        if (!res.ok) throw new Error(String(res.status));
+        status.textContent = "";
         done(false);
       })
-      .catch(function () {
+      .catch(failed)
+      .then(function () {
+        if (timer) clearTimeout(timer);
         sendButton.disabled = false;
-        status.className = "form-status is-error";
-        status.innerHTML = "";
-        status.appendChild(document.createTextNode("Sorry, that didn't send. Please try again, or email me at "));
-        var link = document.createElement("a");
-        link.href = "mailto:" + config.email;
-        link.textContent = config.email;
-        status.appendChild(link);
-        status.appendChild(document.createTextNode("."));
+        sendButton.removeAttribute("aria-busy");
       });
   });
+
+  // Nothing typed is lost: the form stays filled in so they can try again.
+  function failed() {
+    status.className = "form-status is-error";
+    status.textContent = "";
+    status.appendChild(document.createTextNode("Sorry, that didn\u2019t send. Your note is still here, so please try again. Or reach me directly: "));
+    if (config.phone) {
+      var tel = document.createElement("a");
+      tel.href = "tel:+1" + config.phone.replace(/\D/g, "").slice(-10);
+      tel.textContent = "call or text " + config.phone;
+      status.appendChild(tel);
+      status.appendChild(document.createTextNode(", or email "));
+    } else {
+      status.appendChild(document.createTextNode("email "));
+    }
+    var mail = document.createElement("a");
+    mail.href = "mailto:" + config.email;
+    mail.textContent = config.email;
+    status.appendChild(mail);
+    status.appendChild(document.createTextNode("."));
+  }
 })();
